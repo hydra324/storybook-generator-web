@@ -1,0 +1,53 @@
+/* Carousel.css
+
+/* Increase arrow size */
+/* .slick-prev,
+.slick-next {
+  font-size: 16px;
+  line-height: 3;
+} */
+
+/* Center arrows vertically */
+/* .slick-prev,
+.slick-next {
+  top: 50%;
+  transform: translateY(-50%);
+} */
+
+/* Custom arrow styles (feel free to customize further) */
+/* .slick-prev, .slick-next {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  width: 6em;
+  height: 2.6em;
+  font-size: 30px;
+} */
+
+/* .slick-prev:hover,
+.slick-next:hover {
+  background-color: #45a049;
+} */
+
+/* .slick-prev {
+    left: -200px;
+} */
+
+/* .slick-next {
+    right: -200px;
+} */
+
+/* .slick-prev:hover:before,
+.slick-next:hover:before {
+  font-size: 30px;
+} */
+
+.slick-prev, .slick-next {
+    /* color: #4CAF50; */
+    background-color: #4CAF50;
+}
+
+.slick-prev:hover, .slick-next:hover {
+    background-color: #4CAF50;
+}
