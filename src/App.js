@@ -1,10 +1,10 @@
 import React from 'react';
-import CreateStorybookPage from './CreateStorybookPage';
+import Book from './Book';
 
 function App() {
   return (
     <div className="App">
-      <CreateStorybookPage />
+      <Book />
     </div>
   );
 }

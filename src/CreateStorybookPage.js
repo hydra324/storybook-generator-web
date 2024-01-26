@@ -5,7 +5,8 @@ import Carousel from './Carousel';
 const CreateStorybookPage = () => {
   const [generatedImages, setGeneratedImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState('');
-  const [paragraph, setParagraph] = useState('');
+  const [paragraphs, setParagraphs] = useState(['']); // Maintain an array of paragraphs
+  const [currentPageIndex, setCurrentPageIndex] = useState(0); // Track current page index
 
   const mockSummarizationApi = async (inputParagraph) => {
     // Simulate summarization API call
@@ -34,17 +35,35 @@ const CreateStorybookPage = () => {
   };
 
   const handleGenerateIllustrations = async () => {
-    // Simulate API calls with stub functions
-    const summarizationResponse = await mockSummarizationApi(paragraph);
-    const summary = summarizationResponse.summary;
+    const generatedImagesArray = [];
+    for (const paragraph of paragraphs) {
+      const summarizationResponse = await mockSummarizationApi(paragraph);
+      const summary = summarizationResponse.summary;
+      const imageGenerationResponse = await mockImageGenerationApi(summary);
+      generatedImagesArray.push(imageGenerationResponse.image_urls);
+    }
+    setGeneratedImages(generatedImagesArray);
 
-    const imageGenerationResponse = await mockImageGenerationApi(summary);
-    setGeneratedImages(imageGenerationResponse.image_urls);
+    // // Simulate API calls with stub functions
+    // const summarizationResponse = await mockSummarizationApi(paragraphs);
+    // const summary = summarizationResponse.summary;
+
+    // const imageGenerationResponse = await mockImageGenerationApi(summary);
+    // setGeneratedImages(imageGenerationResponse.image_urls);
   };
 
-  const handleSelectImage = (imageUrl) => {
-    setSelectedImage(imageUrl);
+  const handleNextPage = () => {
+    if (currentPageIndex < paragraphs.length - 1) {
+      setCurrentPageIndex(currentPageIndex + 1);
+    }
   };
+
+  const handlePreviousPage = () => {
+    if (currentPageIndex > 0) {
+      setCurrentPageIndex(currentPageIndex - 1);
+    }
+  };
+
 
   return (
     <div className="create-storybook-page">
@@ -57,8 +76,8 @@ const CreateStorybookPage = () => {
           id="storybook-text"
           rows="4"
           cols="50"
-          value={paragraph}
-          onChange={(e) => setParagraph(e.target.value)}
+          value={paragraphs}
+          onChange={(e) => setParagraphs(e.target.value)}
         />
       </div>
 
@@ -69,12 +88,12 @@ const CreateStorybookPage = () => {
       {generatedImages.length > 0 && (
         <div>
           <h3>Choose an Image:</h3>
-          <Carousel images={generatedImages} onSelectImage={handleSelectImage} />
+          <Carousel images={generatedImages} onSelectImage={setSelectedImage} />
         </div>
       )}
 
       {/* Display the selected image */}
-      {selectedImage && <div><h3>Selected Image:</h3><img src={selectedImage} alt="Selected Image" /></div>}
+      {selectedImage && <div><h3>Selected Image:</h3><img src={selectedImage} alt="Selected" /></div>}
     </div>
   );
 };
