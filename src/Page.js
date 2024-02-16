@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Carousel from './Carousel';
 import './Page.css';
 import axios from 'axios';
-
+import { RingLoader } from 'react-spinners';
 const API_HOST = "http://127.0.0.1:8000";
 
 const defaultImageUrls = [
@@ -16,6 +16,8 @@ const Page = ({ pageIndex }) => {
   const [pageText,setPageText] = useState('');
   const [imageUrls,setImageUrls] = useState(defaultImageUrls);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     // fetch from lcoaclstorage
     setPageText(localStorage.getItem(`${pageIndex}:text`) || '');
@@ -31,15 +33,28 @@ const Page = ({ pageIndex }) => {
 
   const generateImage = () => {
     // call api
-    axios.post(API_HOST+'/generate_images', {'rawText':pageText}).then(res => setImageUrls(res.data.imageUrls));
+    setIsLoading(true);
+    // axios.post(API_HOST+'/generate_images', {'rawText':pageText})
+    //   .then(res => setImageUrls(res.data.imageUrls))
+    //   .finally(() => setIsLoading(false));
+    setTimeout(() => {
+      // Simulate network call completion
+      setIsLoading(false);
+    }, 2000);
   }
   
   return (
     <div className="page">
       <h2>Page {pageIndex + 1}</h2>
       <textarea rows={10} cols={50} value={pageText} onChange={(e)=>setPageText(e.target.value)} />
-      <button onClick={() => generateImage()}>Generate Image</button>      
-      <Carousel images={imageUrls} onSelectImage={setSelectedImage} selectedImage={selectedImage} />
+      <button onClick={() => generateImage()} disabled={isLoading} style={{ opacity: isLoading ? 0.5 : 1, pointerEvents: isLoading ? 'none' : 'auto' }}>Generate Image</button>
+      {isLoading ? (
+        <div className={`spinner ${isLoading ? 'show' : 'hide'}`}>
+          <RingLoader color="#123abc" loading={isLoading} />
+        </div>
+      ) : (
+        <Carousel images={imageUrls} onSelectImage={setSelectedImage} selectedImage={selectedImage} />
+      )}
       <button onClick={setLocalStore}>Save</button>
     </div>
   );

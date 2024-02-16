@@ -33,6 +33,15 @@
     cursor: pointer;
   }
   
+  .spinner {
+    display: none;
+  }
+  
+  .spinner.show {
+    display: block;
+    width: 50em;
+  }
+  
   button:hover {
     background-color: #0056b3;
   }
