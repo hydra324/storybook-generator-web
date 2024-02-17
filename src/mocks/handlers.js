@@ -1,7 +1,7 @@
 import { HttpResponse, delay, http } from 'msw';
 
 export const handlers = [
-  http.post(`*/generate_images`, async (req, res, ctx) => {
+  http.post(`*/generate_images`, async () => {
     await delay(2000);
 
     return HttpResponse.json({
