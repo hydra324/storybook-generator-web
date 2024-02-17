@@ -3,7 +3,7 @@ import Carousel from './Carousel';
 import './Page.css';
 import axios from 'axios';
 import { RingLoader } from 'react-spinners';
-const API_HOST = "http://127.0.0.1:8000";
+const API_HOST = process.env.REACT_APP_API_URL;
 
 const defaultImageUrls = [
   'https://img.freepik.com/premium-vector/nature-outdoor-with-cute-kids-books-letter-cubes_679557-1977.jpg?size=626&ext=jpg&ga=GA1.1.1039114739.1705691503&semt=ais',
@@ -32,15 +32,11 @@ const Page = ({ pageIndex }) => {
   }
 
   const generateImage = () => {
-    // call api
+    // api call
     setIsLoading(true);
-    // axios.post(API_HOST+'/generate_images', {'rawText':pageText})
-    //   .then(res => setImageUrls(res.data.imageUrls))
-    //   .finally(() => setIsLoading(false));
-    setTimeout(() => {
-      // Simulate network call completion
-      setIsLoading(false);
-    }, 2000);
+    axios.post(`${API_HOST}/generate_images`, {'rawText':pageText})
+        .then(res => setImageUrls(res.data.imageUrls))
+        .finally(() => setIsLoading(false));
   }
   
   return (
