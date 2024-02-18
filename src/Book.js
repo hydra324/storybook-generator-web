@@ -1,11 +1,11 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import Page from './Page';
 import './Book.css';
 import emptyCanvasIllustration from './assets/undraw_mic_drop_uuyg.svg';
 
-const endingPage = 
+const lastPage = 
   <div className="page">
-    <img src={emptyCanvasIllustration} />
+    <img src={emptyCanvasIllustration} alt="empty canvas illustration" />
   </div>
 
 const Book = () => {
@@ -20,8 +20,9 @@ const Book = () => {
   }
 
   const createNewPage = () => {
-    setPage(allPages.length+1);
-    setAllPages(prevPages => [...prevPages, <Page pageIndex={prevPages.length} />]);
+    const newPageIndex = allPages.length;
+    setAllPages(prevPages => [...prevPages, <Page pageIndex={newPageIndex} />]);
+    setCurrentPage(newPageIndex);
   };
 
   return (
@@ -34,8 +35,8 @@ const Book = () => {
         ))}
       </div>
       <span className='page-buttons'>
-        <button onClick={() => setPage(currentPage+1)}>Previous Page</button>
-        <button onClick={() => setPage(currentPage-1)}>Next Page</button>
+        <button onClick={() => setPage(currentPage-1)}>Previous Page</button>
+        <button onClick={() => setPage(currentPage+1)}>Next Page</button>
       </span>
       <button onClick={createNewPage}>Insert Page at the end</button>
     </div>
