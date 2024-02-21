@@ -6,26 +6,34 @@ import HTMLFlipBook from 'react-pageflip';
 
 const lastPage = 
   <div className="page">
-    <img src={emptyCanvasIllustration} alt="empty canvas illustration" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+    <img src={emptyCanvasIllustration} alt="empty canvas illustration" style={{ width: '90%', height: '90%', objectFit: 'contain' }} />
   </div>
 
 const Book = () => {
   const [allPages, setAllPages] = useState(() => [
-    <Page pageIndex={0} />,
-    <Page pageIndex={1} />,
-    <Page pageIndex={2} />,
-    <Page pageIndex={3} />,
     lastPage
   ]);
 
+  const createNewpage = () => {
+    setAllPages((prevPages) => {
+      const newPageIndex = prevPages.length - 1;
+      const newPage = <Page pageIndex={newPageIndex} />;
+      return [...prevPages.slice(0, -1), newPage, lastPage];
+    });
+  }
+
   return (
-    <HTMLFlipBook width={300} height={500}>
-        {allPages.map((page, index) => (
-          <div key={index}>
-            {page}
-          </div>
-        ))}
-    </HTMLFlipBook>
+    <div className='book-container'>
+      <HTMLFlipBook width={800} height={1000}> 
+          {allPages.map((page, index) => (
+            <div key={index} className='page'>
+              {page}
+            </div>
+          ))}
+      </HTMLFlipBook>
+      <button onClick={createNewpage}>Insert new page</button>  
+    </div>
+    
   );
 };
 
