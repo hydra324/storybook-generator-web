@@ -5,7 +5,7 @@ import axios from 'axios';
 import { RingLoader } from 'react-spinners';
 const API_HOST = process.env.REACT_APP_API_URL;
 
-const Page = ({ pageIndex }) => {
+const Page = React.forwardRef(( props, ref ) => {
   
   const [pageText,setPageText] = useState('');
   const [imageUrls,setImageUrls] = useState([]);
@@ -14,15 +14,15 @@ const Page = ({ pageIndex }) => {
 
   useEffect(() => {
     // fetch from lcoaclstorage
-    setPageText(localStorage.getItem(`${pageIndex}:text`) || '');
-    setImageUrls(JSON.parse(localStorage.getItem(`${pageIndex}:imageUrls`)) || []);
-    setSelectedImage(parseInt(localStorage.getItem(`${pageIndex}:selectedImage`) || 0));
-  }, []);
+    setPageText(localStorage.getItem(`${props.pageIndex}:text`) || '');
+    setImageUrls(JSON.parse(localStorage.getItem(`${props.pageIndex}:imageUrls`)) || []);
+    setSelectedImage(parseInt(localStorage.getItem(`${props.pageIndex}:selectedImage`) || 0));
+  }, [props.pageIndex]);
 
   const setLocalStore = () => {
-    localStorage.setItem(`${pageIndex}:text`,pageText);
-    localStorage.setItem(`${pageIndex}:imageUrls`,JSON.stringify(imageUrls));
-    localStorage.setItem(`${pageIndex}:selectedImage`,selectedImage);
+    localStorage.setItem(`${props.pageIndex}:text`,pageText);
+    localStorage.setItem(`${props.pageIndex}:imageUrls`,JSON.stringify(imageUrls));
+    localStorage.setItem(`${props.pageIndex}:selectedImage`,selectedImage);
   }
 
   const generateImage = () => {
@@ -34,8 +34,8 @@ const Page = ({ pageIndex }) => {
   }
   
   return (
-    <div className="page">
-      <h2>Page {pageIndex + 1}</h2>
+    <div className="page" ref={ref}>
+      <h2>Page {props.pageIndex + 1}</h2>
       <textarea rows={10} cols={50} value={pageText} onChange={(e)=>setPageText(e.target.value)} />
       <button onClick={() => generateImage()} disabled={isLoading} style={{ opacity: isLoading ? 0.5 : 1, pointerEvents: isLoading ? 'none' : 'auto' }}>Generate Image</button>
       {isLoading ? (
@@ -48,6 +48,6 @@ const Page = ({ pageIndex }) => {
       <button onClick={setLocalStore}>Save</button>
     </div>
   );
-};
+});
 
 export default Page;

@@ -2,44 +2,30 @@ import React, { useState } from 'react';
 import Page from './Page';
 import './Book.css';
 import emptyCanvasIllustration from './assets/undraw_mic_drop_uuyg.svg';
+import HTMLFlipBook from 'react-pageflip';
 
 const lastPage = 
   <div className="page">
-    <img src={emptyCanvasIllustration} alt="empty canvas illustration" />
+    <img src={emptyCanvasIllustration} alt="empty canvas illustration" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
   </div>
 
 const Book = () => {
-  const [allPages, setAllPages] = useState(() => []);
-  const [currentPage, setCurrentPage] = useState(0);
-
-  const setPage = (index) => {
-    // code to animate the page flip
-    // check whether index is within bounds
-    if (index < 0 || index >= allPages.length) return;
-    setCurrentPage(index);
-  }
-
-  const createNewPage = () => {
-    const newPageIndex = allPages.length;
-    setAllPages(prevPages => [...prevPages, <Page pageIndex={newPageIndex} />]);
-    setCurrentPage(newPageIndex);
-  };
+  const [allPages, setAllPages] = useState(() => [
+    <Page pageIndex={0} />,
+    <Page pageIndex={1} />,
+    <Page pageIndex={2} />,
+    <Page pageIndex={3} />,
+    lastPage
+  ]);
 
   return (
-    <div className="book">
-      <div className="page-container">
+    <HTMLFlipBook width={300} height={500}>
         {allPages.map((page, index) => (
-            <div key={index} className="page-container-mid" style={{ zIndex: currentPage === index ? 1 : 0 }}>
+          <div key={index}>
             {page}
           </div>
         ))}
-      </div>
-      <span className='page-buttons'>
-        <button onClick={() => setPage(currentPage-1)}>Previous Page</button>
-        <button onClick={() => setPage(currentPage+1)}>Next Page</button>
-      </span>
-      <button onClick={createNewPage}>Insert Page at the end</button>
-    </div>
+    </HTMLFlipBook>
   );
 };
 
