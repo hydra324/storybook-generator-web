@@ -1,28 +1,31 @@
-import { within, userEvent, expect } from '@storybook/test';
-
-import { Page } from './Page';
+import Page from "./Page.js";
 
 export default {
-  title: 'Example/Page',
-  component: Page,
-  parameters: {
-    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
-    layout: 'fullscreen',
-  },
+    component: Page,
+    title: 'Page',
+    tags: ['autodocs'],
+    parameters: {
+        // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
+        layout: 'centered',
+      },
 };
 
-export const LoggedOut = {};
+// export const Default = () => <Page />;
 
-// More on interaction testing: https://storybook.js.org/docs/writing-tests/interaction-testing
-export const LoggedIn = {
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const loginButton = canvas.getByRole('button', { name: /Log in/i });
-    await expect(loginButton).toBeInTheDocument();
-    await userEvent.click(loginButton);
-    await expect(loginButton).not.toBeInTheDocument();
+export const FirstPage = {
+    args: {
+        pageNumber: 1,
+        zIndex: 1,
+        navigateNext: () => {console.log('Next Page clicked!')},
+        navigatePrev: () => {console.log('Previous Page clicked!')},
+    },
+};
 
-    const logoutButton = canvas.getByRole('button', { name: /Log out/i });
-    await expect(logoutButton).toBeInTheDocument();
-  },
+export const SecondPage = {
+    args: {
+        pageNumber: 2,
+        zIndex: 0,
+        navigateNext: () => {console.log('Next Page clicked!')},
+        navigatePrev: () => {console.log('Previous Page clicked!')},
+    },
 };
