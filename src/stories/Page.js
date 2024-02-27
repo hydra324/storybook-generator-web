@@ -1,19 +1,21 @@
 import { VStack, HStack, Heading, Box, StackDivider, Button, ButtonGroup, Textarea, Text } from '@chakra-ui/react';
+import theme from '../theme';
 
 // dragover event listener for vstack
 
 const Page = ({pageNumber, zIndex, navigateNext, navigatePrev}) => {
     return (
-        <VStack pos="absolute" top="30%" left="30%" w="40vw" h="70vh" zIndex={zIndex} boxShadow="lg" borderRadius="md" bg="white" p={4}>
+        <VStack pos="absolute" top="30%" left="30%" w="40vw" h="70vh" zIndex={zIndex} boxShadow="lg" borderRadius="md" p={4} bg={theme.colors.purple}>
             <Textarea 
                 position="absolute"
-                placeholder={`${String.fromCharCode(9998)}`} 
-                _hover={{ border: "1px solid black" }}
-                _focus={{ border: "1px solid black" }}
+                placeholder={`Enter text`} 
+                _hover={{ border: "1px solid white" }}
+                _focus={{ border: "1px solid white" }}
                 border="none"
                 borderRadius="md"
                 p={2}
-                fontSize="2xl"
+                fontSize={theme.fontSizes["2xl"]}
+                fontWeight={theme.fontWeights.bold}
                 maxH="80%"
                 resize="both"
                 textAlign="center"
