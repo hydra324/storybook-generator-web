@@ -10,8 +10,6 @@ export default {
       },
 };
 
-// export const Default = () => <Page />;
-
 export const FirstPage = {
     args: {
         pageNumber: 1,

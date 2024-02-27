@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
-    "@chakra-ui/storybook-addon": "^5.1.0",
     "@emotion/react": "^11.11.3",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -50,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "@chakra-ui/storybook-addon": "^5.1.0",
     "@storybook/addon-essentials": "^7.6.17",
     "@storybook/addon-interactions": "^7.6.17",
     "@storybook/addon-links": "^7.6.17",
