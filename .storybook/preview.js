@@ -1,4 +1,5 @@
 /** @type { import('@storybook/react').Preview } */
+const { theme } = require('@chakra-ui/react');
 const preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
@@ -7,6 +8,9 @@ const preview = {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
+    },
+    chakra: {
+      theme,
     },
   },
 };

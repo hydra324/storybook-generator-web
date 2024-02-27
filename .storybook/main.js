@@ -7,7 +7,11 @@ const config = {
     "@storybook/preset-create-react-app",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
+    "@chakra-ui/storybook-addon"
       ],
+    features: {
+      emotionAlias: false,
+    },
     framework: {
     name: "@storybook/react-webpack5",
     options: {
