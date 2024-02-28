@@ -22,10 +22,10 @@ const Page = ({pageNumber, zIndex, navigateNext, navigatePrev}) => {
     }
 
     return (
-            <DndContext onDragEnd={handleDragEnd} modifiers={[restrictToWindowEdges]}>
+            <DndContext onDragEnd={handleDragEnd}>
                 <VStack pos="absolute" top="30%" left="30%" w="40vw" h="70vh" zIndex={zIndex} boxShadow="lg" borderRadius="md" p={4} bg={theme.colors.purple} overflow="hidden">
                     <Draggable x={x} y={y} dragID={'draggable1'}/>
-                    <Text as="footer" size="md" mt={2} pos="absolute" bottom={4} >{`Page ${pageNumber}`}</Text>
+                    <Text as="footer" size="md" mt={2} pos="absolute" bottom={4} color={theme.colors.white}>{`Page ${pageNumber}`}</Text>
                 </VStack>
             </DndContext>
     );
