@@ -2,11 +2,13 @@ import React from 'react';
 import Book from './Book';
 import { ChakraProvider } from "@chakra-ui/react"
 import theme from './theme';
+import Page from './stories/Page';
 
-function App() {
+function App() { 
   return (
     <ChakraProvider theme={theme}>
-      <Book />
+      {/* <Book /> */}
+        <Page pageNumber={1} zIndex={1} navigateNext={() => {}} navigatePrev={() => {}}/>
     </ChakraProvider>
   );
 }
