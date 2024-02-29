@@ -1,10 +1,9 @@
 import React from 'react';
 
-import { createIcon, defaultProps, Icon } from '@chakra-ui/react';
+import { createIcon, Icon } from '@chakra-ui/react';
 import theme from '../theme';
 
 const IconBase = createIcon({
-  defaultProps,
   displayName: 'IconBase',
   viewBox: '0 0 48 48',
   path: [

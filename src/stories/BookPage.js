@@ -1,9 +1,21 @@
-import React from 'react';
-import { HStack, IconButton, VStack, Icon } from '@chakra-ui/react';
+import {React,useState } from 'react';
+import { HStack, IconButton, VStack, Icon} from '@chakra-ui/react';
 import EmblaCarousel from './EmblaCarousel';
 import Page from './Page';
 import {AIImageIcon} from './AIImageIcon';
 import theme from '../theme';
+import axios from 'axios';
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Text, Spinner
+} from '@chakra-ui/react';
+const API_HOST = process.env.REACT_APP_API_URL;
 
 
 const BookPage = ({pageNumber}) => {
@@ -16,14 +28,30 @@ const BookPage = ({pageNumber}) => {
   // ]
 
   
-  const [slides, setSlides] = React.useState([]);
+  const [slides, setSlides] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [pageText,setPageText] = useState('');
 
   const getImages = () => {
     // get images from api
-    // set images from api
+    console.log(process.env.NODE_ENV);
+    setIsLoading(true);
+    axios.post(`${API_HOST}/generate_images`, {'rawText':pageText})
+        .then(res => setSlides(res.data.imageUrls))
+        .finally(() => setIsLoading(false));
   }
   return (
     <VStack pos="relative" w="50%" h="100vh" m="auto">
+        <Modal isOpen={isLoading} closeOnOverlayClick={false}>
+          <ModalOverlay />
+          <ModalContent>
+              <VStack>
+                  <Spinner size="xl" />
+                  <Text as="h1">Loading...</Text>
+              </VStack>
+          </ModalContent>
+        </Modal>
         {
             <IconButton 
             variant='solid'
@@ -35,7 +63,7 @@ const BookPage = ({pageNumber}) => {
             bottom="0.3rem"
             right="-4rem"
             icon={<Icon as={AIImageIcon} />}
-            onClick={() => {}}
+            onClick={getImages}
           />
         }
         {slides.length>0 && <EmblaCarousel slides={slides} options={OPTIONS} />}
