@@ -6,7 +6,7 @@ import {
 } from './EmblaCarouselArrowButtons'
 import useEmblaCarousel from 'embla-carousel-react'
 import './emblacarousel.css';
-import {HStack} from '@chakra-ui/react';
+import {HStack, Image} from '@chakra-ui/react';
 
 const EmblaCarousel = (props) => {
   const { slides, options } = props
@@ -28,7 +28,7 @@ const EmblaCarousel = (props) => {
               {slides.map((url,index) => (
                 <div className="embla__slide" key={index}>
                   <div className="embla__slide__number">
-                    <img src={url} />
+                    <Image objectFit="cover" src={url} w="100%" h="100%" />
                   </div>
                 </div>
               ))}

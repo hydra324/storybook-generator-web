@@ -12,7 +12,7 @@ const BookPage = () => {
     
   ]
   return (
-    <HStack w="50vw" h="50vh" m="auto">
+    <HStack pos="relative" w="50%" h="50%" m="auto">
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />
         <Page pageNumber={1} />
     </HStack>

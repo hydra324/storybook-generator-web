@@ -22,7 +22,7 @@ const Page = ({pageNumber}) => {
 
     return (
             <DndContext onDragEnd={handleDragEnd}>
-                <VStack pos="absolute" top="30%" left="30%" w="40%" h="70%" boxShadow="lg" borderRadius="md" p={4} bg={theme.colors.purple} overflow="hidden">
+                <VStack pos="absolute" top="0" left="0" w="100%" h="100%" boxShadow="lg" borderRadius="md" p={4} bg="transparent" overflow="hidden">
                     <Draggable x={x} y={y} dragID={'draggable1'}/>
                     <Text as="footer" size="md" mt={2} pos="absolute" bottom={4} color={theme.colors.white}>{`Page ${pageNumber}`}</Text>
                 </VStack>
