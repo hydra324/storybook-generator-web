@@ -8,18 +8,12 @@ export default {
 
 export const FirstPage = {
     args: {
-        pageNumber: 1,
-        zIndex: 1,
-        navigateNext: () => {console.log('Next Page clicked!')},
-        navigatePrev: () => {console.log('Previous Page clicked!')},
+        pageNumber: 1
     },
 };
 
 export const SecondPage = {
     args: {
-        pageNumber: 2,
-        zIndex: 0,
-        navigateNext: () => {console.log('Next Page clicked!')},
-        navigatePrev: () => {console.log('Previous Page clicked!')},
+        pageNumber: 2
     },
 };

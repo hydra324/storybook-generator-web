@@ -1,6 +1,7 @@
 import React from 'react';
-import { VStack } from '@chakra-ui/react';
+import { HStack, VStack } from '@chakra-ui/react';
 import EmblaCarousel from './EmblaCarousel';
+import Page from './Page';
 
 const BookPage = () => {
   const OPTIONS = {}
@@ -11,9 +12,10 @@ const BookPage = () => {
     
   ]
   return (
-    <VStack w="50vw" h="50vh" m="auto">
+    <HStack w="50vw" h="50vh" m="auto">
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />
-    </VStack>
+        <Page pageNumber={1} />
+    </HStack>
   );
 };
 
