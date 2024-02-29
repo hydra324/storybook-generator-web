@@ -6,7 +6,7 @@ import {
 } from './EmblaCarouselArrowButtons'
 import useEmblaCarousel from 'embla-carousel-react'
 import './emblacarousel.css';
-import {HStack, Image} from '@chakra-ui/react';
+import {HStack, Image, VStack} from '@chakra-ui/react';
 
 const EmblaCarousel = (props) => {
   const { slides, options } = props
@@ -20,21 +20,21 @@ const EmblaCarousel = (props) => {
   } = usePrevNextButtons(emblaApi)
 
   return (
-    <HStack>
+    <HStack className='embla-hstack' h="100%">
         <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-        <section className="embla">
+        <VStack className="embla embla-vstack">
           <div className="embla__viewport" ref={emblaRef}>
             <div className="embla__container">
               {slides.map((url,index) => (
                 <div className="embla__slide" key={index}>
                   <div className="embla__slide__number">
-                    <Image objectFit="cover" src={url} w="100%" h="100%" />
+                    <Image objectFit="fill" src={url} w="100%" h="100%" />
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        </section>
+        </VStack>
         <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
     </HStack>
   )

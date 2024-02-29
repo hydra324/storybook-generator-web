@@ -42,7 +42,7 @@ const BookPage = ({pageNumber}) => {
         .finally(() => setIsLoading(false));
   }
   return (
-    <VStack pos="relative" w="50%" h="100vh" m="auto">
+    <VStack className='bookpage-stack' pos="relative" w="50%" h="100vh" m="auto">
         <Modal isOpen={isLoading} closeOnOverlayClick={false}>
           <ModalOverlay />
           <ModalContent>
