@@ -3,7 +3,7 @@ import { HStack, VStack } from '@chakra-ui/react';
 import EmblaCarousel from './EmblaCarousel';
 import Page from './Page';
 
-const BookPage = () => {
+const BookPage = ({pageNumber}) => {
   const OPTIONS = {}
   const SLIDES = [
     'https://img.freepik.com/free-vector/kids-discussing-with-book-forest_1308-30690.jpg?size=626&ext=jpg',
@@ -12,15 +12,15 @@ const BookPage = () => {
     
   ]
   return (
-    <HStack pos="relative" w="50%" h="50%" m="auto">
+    <HStack pos="relative" w="50%" h="100vh" m="auto">
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />
-        <Page pageNumber={1} />
+        <Page pageNumber={pageNumber} />
     </HStack>
   );
 };
 
 BookPage.defaultProps = {
-
+  pageNumber: 1,
 };
 
 export default BookPage;

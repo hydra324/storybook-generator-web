@@ -7,5 +7,5 @@ export default {
 }
 
 export const DefaultBookPage = {
-    render: () => <BookPage />
+    render: () => <BookPage pageNumber={1}/>
 }
