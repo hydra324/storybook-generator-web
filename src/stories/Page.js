@@ -1,15 +1,13 @@
-import { VStack, HStack, Heading, Box, StackDivider, Button, ButtonGroup, Textarea, Text } from '@chakra-ui/react';
+import { VStack, Text } from '@chakra-ui/react';
 import theme from '../theme';
 import {DndContext} from '@dnd-kit/core';
 import {useState} from 'react';
 import Draggable from './Draggable';
 
-// dragover event listener for vstack
-
 const Page = ({pageNumber}) => {
     const defaultCoordinates = {
-        x: 0,
-        y: 0,
+        x: 100,
+        y: 100,
       };
     const [{x, y}, setCoordinates] = useState(defaultCoordinates);
 
