@@ -1,7 +1,7 @@
 /** @type { import('@storybook/react').Preview } */
 import { initialize, mswLoader } from 'msw-storybook-addon'; 
-import { rest, delay } from 'msw' 
-// import { handlers } from '../src/mocks/handlers';
+import { rest } from 'msw'
+
 // initialize msw
 initialize({},[
   rest.post('*/generate_images', (req, res, ctx) => {
