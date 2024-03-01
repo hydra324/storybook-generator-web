@@ -1,11 +1,15 @@
 import React from 'react';
-import Book from './Book';
+// import Book from './Book';
+import { ChakraProvider } from "@chakra-ui/react"
+import theme from './theme';
+import Book from './stories/Book';
 
-function App() {
+function App() { 
   return (
-    <div className="App">
+    <ChakraProvider theme={theme}>
+      {/* <Book /> */}
       <Book />
-    </div>
+    </ChakraProvider>
   );
 }
 
