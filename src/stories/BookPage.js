@@ -48,19 +48,20 @@ const BookPage = ({pageNumber}) => {
         </Modal>
         {
           <Tooltip label="Generate AI Image" aria-label="Generate AI Image">
-            <IconButton 
-            variant='solid'
-            size='lg'
-            fontSize='35px'
-            color='brand.200'
-            bg='brand.200'
-            _hover={{bg: 'brand.100'}}
-            aria-label="AI Image"
-            pos="absolute"
-            bottom="0.3rem"
-            right="-4rem"
-            icon={<Icon as={AIImageIcon} />}
-            onClick={getImages}
+            <IconButton
+              isRound={true} 
+              variant='solid'
+              size='lg'
+              fontSize='35px'
+              color='brand.200'
+              bg='brand.200'
+              _hover={{bg: 'brand.100'}}
+              aria-label="AI Image"
+              pos="absolute"
+              bottom="0.3rem"
+              right="-4rem"
+              icon={<Icon as={AIImageIcon} />}
+              onClick={getImages}
           />
           </Tooltip>
         }

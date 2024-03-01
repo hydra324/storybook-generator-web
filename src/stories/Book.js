@@ -32,18 +32,19 @@ const pageRef = useRef(null);
           {
             <Tooltip label="Add New Page" aria-label="Add New Page">
             <IconButton 
-            variant='solid'
-            size='lg'
-            fontSize='25px'
-            // color='brand.200'
-            bg='brand.200'
-            _hover={{bg: 'brand.100'}}   
-            aria-label="Add New Page"
-            pos="fixed"
-            top="0.3rem"
-            right="1rem"
-            icon={<AddIcon />}
-            onClick={addPage}
+              isRound={true}
+              variant='solid'
+              size='lg'
+              fontSize='25px'
+              // color='brand.200'
+              bg='brand.200'
+              _hover={{bg: 'brand.100'}}   
+              aria-label="Add New Page"
+              pos="fixed"
+              top="0.3rem"
+              right="1rem"
+              icon={<AddIcon />}
+              onClick={addPage}
             />
             </Tooltip>
         }
