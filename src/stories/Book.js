@@ -5,7 +5,7 @@ import BookPage from './BookPage';
 const Book = () => {
   const totalPages = 3;
   return (
-      <VStack className='book-stack' bg='brand.20'>
+      <VStack className='book-stack'>
           {totalPages > 0 && Array.from({ length: totalPages }).map((_, index) => (
               <BookPage key={index} pageNumber={index + 1} />
           ))}
