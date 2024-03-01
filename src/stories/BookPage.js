@@ -1,5 +1,5 @@
 import {React,useState } from 'react';
-import { HStack, IconButton, VStack, Icon} from '@chakra-ui/react';
+import { HStack, IconButton, VStack, Icon, Tooltip} from '@chakra-ui/react';
 import EmblaCarousel from './EmblaCarousel';
 import Page from './Page';
 import {AIImageIcon} from './AIImageIcon';
@@ -47,20 +47,23 @@ const BookPage = ({pageNumber}) => {
           </ModalContent>
         </Modal>
         {
-            <IconButton 
-            variant='solid'
-            size='lg'
-            fontSize='35px'
-            color='brand.200'
-            bg='brand.200'
-            _hover={{bg: 'brand.100'}}
-            aria-label="AI Image"
-            pos="absolute"
-            bottom="0.3rem"
-            right="-4rem"
-            icon={<Icon as={AIImageIcon} />}
-            onClick={getImages}
+          <Tooltip label="Generate AI Image" aria-label="Generate AI Image">
+            <IconButton
+              isRound={true} 
+              variant='solid'
+              size='lg'
+              fontSize='35px'
+              color='brand.200'
+              bg='brand.200'
+              _hover={{bg: 'brand.100'}}
+              aria-label="AI Image"
+              pos="absolute"
+              bottom="0.3rem"
+              right="-4rem"
+              icon={<Icon as={AIImageIcon} />}
+              onClick={getImages}
           />
+          </Tooltip>
         }
         {slides.length>0 && <EmblaCarousel slides={slides} options={OPTIONS} />}
         <Page pageNumber={pageNumber} />

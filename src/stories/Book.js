@@ -1,4 +1,4 @@
-import { VStack} from '@chakra-ui/react';
+import { Tooltip, VStack} from '@chakra-ui/react';
 import {React, useState, useRef, useEffect} from 'react';
 import BookPage from './BookPage';
 import {IconButton, Text } from '@chakra-ui/react';
@@ -30,20 +30,23 @@ const pageRef = useRef(null);
           ))}
           {totalPages === 0 && <Text fontSize='lg' marginTop='25%'>Add a page to start</Text>}
           {
+            <Tooltip label="Add New Page" aria-label="Add New Page">
             <IconButton 
-            variant='solid'
-            size='lg'
-            fontSize='25px'
-            // color='brand.200'
-            bg='brand.200'
-            _hover={{bg: 'brand.100'}}   
-            aria-label="Add New Page"
-            pos="fixed"
-            top="0.3rem"
-            right="1rem"
-            icon={<AddIcon />}
-            onClick={addPage}
-          />
+              isRound={true}
+              variant='solid'
+              size='lg'
+              fontSize='25px'
+              // color='brand.200'
+              bg='brand.200'
+              _hover={{bg: 'brand.100'}}   
+              aria-label="Add New Page"
+              pos="fixed"
+              top="0.3rem"
+              right="1rem"
+              icon={<AddIcon />}
+              onClick={addPage}
+            />
+            </Tooltip>
         }
       </VStack>
     
