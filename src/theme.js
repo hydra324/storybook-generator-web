@@ -4,7 +4,7 @@ import '@fontsource/swanky-and-moo-moo';
 const theme = extendTheme({
   colors: {
     brand:{
-      20: "rgba(0, 0, 0, 0.80)",
+      20: "rgba(0, 0, 0, 0.92)",
       50: "#F0FFF4",
       100: "#2B6CB0",
       200: "#B794F4",
