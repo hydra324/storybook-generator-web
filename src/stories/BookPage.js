@@ -42,7 +42,7 @@ const BookPage = ({pageNumber}) => {
         .finally(() => setIsLoading(false));
   }
   return (
-    <VStack className='bookpage-stack' pos="relative" w="50%" h="100vh" m="auto">
+    <VStack className='bookpage-stack' pos="relative" w="50%" h="100vh" m="auto" bg={slides.length>0 ? 'transparent' : 'brand.200'}>
         <Modal isOpen={isLoading} closeOnOverlayClick={false}>
           <ModalOverlay />
           <ModalContent>
@@ -57,7 +57,9 @@ const BookPage = ({pageNumber}) => {
             variant='solid'
             size='lg'
             fontSize='35px'
-            color={theme.colors.white}
+            color='brand.200'
+            bg='brand.200'
+            _hover={{bg: 'brand.100'}}
             aria-label="AI Image"
             pos="absolute"
             bottom="0.3rem"

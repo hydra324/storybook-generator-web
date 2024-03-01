@@ -3,9 +3,13 @@ import '@fontsource/swanky-and-moo-moo';
 
 const theme = extendTheme({
   colors: {
-    blue: "#2B6CB0",
-    purple: "#B794F4",
-    teal: "#B2F5EA",
+    brand:{
+      20: "rgba(0, 0, 0, 0.92)",
+      50: "#F0FFF4",
+      100: "#2B6CB0",
+      200: "#B794F4",
+      300: "#B2F5EA",
+    },
   },
   fonts: {
     // body: "Arial, sans-serif",
